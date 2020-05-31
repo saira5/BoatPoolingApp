@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
@@ -14,10 +15,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 
 import com.example.boatpoolingapp.R;
 import com.example.boatpoolingapp.login;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 /**
@@ -28,19 +31,22 @@ import androidx.fragment.app.FragmentTransaction;
  * Use the {@link RidesFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RidesFragment extends Fragment implements  View.OnClickListener {
+public class RidesFragment extends Fragment  {
     private static RidesFragment ridesFragment;
-Button findridebtn;
-    public static RidesFragment newInstance(){
-        if (ridesFragment == null)
-            ridesFragment = new RidesFragment();
+Button findridebtn,offerRidebtn;
+    ConstraintLayout frameLayout;
+    private OnFragmentInteractionListener mListener;
 
-        return ridesFragment;
+
+
+    public static RidesFragment newInstance(){
+        RidesFragment fragment = new RidesFragment();
+
+        return fragment;
     }
 
 
 
-    private OnFragmentInteractionListener mListener;
 
     public RidesFragment() {
         // Required empty public constructor
@@ -73,22 +79,48 @@ Button findridebtn;
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        offerRidebtn=view.findViewById(R.id.offerRidebtn);
         findridebtn=view.findViewById(R.id.findridebtn);
+        frameLayout = view.findViewById(R.id.frameLayout);
         findridebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Fragment nestedFragment = new FindrideFragment();
-//                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-//                transaction.add(R.id.frameLayout, nestedFragment).commit();
-//
-//                FindrideFragment nextFrag= new FindrideFragment();
+                Fragment nestedFragment = new FindARide();
+                frameLayout.removeAllViews();
+                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+                transaction.add(R.id.frameLayout, nestedFragment).commit();
+
+
+//                FindARide nextFrag= new FindARide();
+//                FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
+//                transaction1.add(R.id.frameLayout, nextFrag);
+//                transaction1.commit();
+
+//                FindARide nextFrag= new FindARide();
 //                getActivity().getSupportFragmentManager().beginTransaction()
 //                        .replace(R.id.frameLayout, nextFrag, "findThisFragment")
 //                        .addToBackStack(null)
 //                        .commit();
             }
         });
+
+        offerRidebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment nestedFragment = new OfferRide();
+                frameLayout.removeAllViews();
+
+                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+                transaction.add(R.id.frameLayout, nestedFragment).commit();
+
+//                FindARide nextFrag= new FindARide();
+//                getActivity().getSupportFragmentManager().beginTransaction()
+//                        .replace(R.id.frameLayout, nextFrag, "findFragment")
+//                        .addToBackStack(null)
+//                        .commit();
+            }
+        });
+
 
     }
 
@@ -116,10 +148,7 @@ Button findridebtn;
         mListener = null;
     }
 
-    @Override
-    public void onClick(View v) {
 
-    }
 
     /**
      * This interface must be implemented by activities that contain this

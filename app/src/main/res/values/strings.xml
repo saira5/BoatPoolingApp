@@ -28,6 +28,7 @@
 
     <string name="toast_name">Please enter Full Name</string>
     <string name="toast_dob">Please enter Date of Birth</string>
+    <string name="empty">Please enter the required field</string>
 
     <string name="toast_login_userpass">Please enter Email and Password</string>
     <string name="toast_login_success">Login Successfully</string>

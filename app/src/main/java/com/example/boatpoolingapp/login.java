@@ -45,8 +45,8 @@ public class login extends AppCompatActivity implements View.OnClickListener{
     ProgressDialog pDialog;
 
     EditText etemail,etpassword;
-    String email,password,name;
-   public static String id;
+    String email,password;
+   public static String id,name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -177,7 +177,7 @@ public class login extends AppCompatActivity implements View.OnClickListener{
 
                             // Toast.makeText(login.this, getString(R.string.toast_login_success), Toast.LENGTH_LONG).show();
                             Intent i = new Intent(login.this,Dashboard.class);
-
+                            i.putExtra("id",id);
                             startActivity(i);
 
                         }

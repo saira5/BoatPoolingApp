@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimary">#00574B</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="background_color">#009688</color>
@@ -8,6 +8,7 @@
     <color name="black">#000000</color>
     <color name="white_greyish">#EEEEEE</color>
     <color name="button_selectorcolor">#9E9E9E</color>
+    <color name="red">#C71212</color>
 
 
 </resources>

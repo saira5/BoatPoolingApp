@@ -103,7 +103,6 @@ TextView oldUser;
         awesomeValidation.addValidation(this, R.id.Password, regexPassword, R.string.invalid_password);
 
 
-
         signup_btn.setOnClickListener(this);
         oldUser.setOnClickListener(this);
         etdob.setOnClickListener(new View.OnClickListener() {
