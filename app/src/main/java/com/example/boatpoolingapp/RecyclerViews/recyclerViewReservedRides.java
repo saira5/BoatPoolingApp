@@ -2,13 +2,11 @@ package com.example.boatpoolingapp.RecyclerViews;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,10 +14,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.boatpoolingapp.Dashboard;
 import com.example.boatpoolingapp.R;
 import com.example.boatpoolingapp.Urls;
-import com.example.boatpoolingapp.login;
 import com.example.boatpoolingapp.model.reservedUserUtils;
 
 import org.apache.http.HttpResponse;
@@ -121,7 +117,7 @@ String rides_id;
             super(itemView);
             pDialog = new ProgressDialog(ctx);
             pDialog.setCancelable(false);
-            userNametv=itemView.findViewById(R.id.userNametv);
+            userNametv=itemView.findViewById(R.id.descriptiontv);
             rejectBtn=itemView.findViewById(R.id.rejectBtn);
             approveBtn=itemView.findViewById(R.id.approveBtn);
 

@@ -1,6 +1,5 @@
 package com.example.boatpoolingapp.Fragments;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,11 +7,13 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.example.boatpoolingapp.R;
@@ -35,11 +36,15 @@ public class bookedRide extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     String name;
+    FrameLayout frameLayout;
+    public static String rides_id;
+
     String departure_time;
     String dearture_city,booking_status;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    Button chatBtn;
     TextView userNametv,timetv,cityTv,statusTv;
     public Date date = null;
     public SimpleDateFormat inputFormat,outputFormat;
@@ -77,10 +82,13 @@ public class bookedRide extends Fragment {
     }
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        chatBtn=view.findViewById(R.id.chatBtn);
+        frameLayout = view.findViewById(R.id.frameLayout);
 
         name = getArguments().getString("name");
         dearture_city = getArguments().getString("dearture_city");
         booking_status = getArguments().getString("booking_status");
+        rides_id = getArguments().getString("rides_id");
 
         inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         outputFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
@@ -94,7 +102,7 @@ public class bookedRide extends Fragment {
 
         departure_time =formattedDate;
         statusTv=view.findViewById(R.id.statusTv);
-        userNametv=view.findViewById(R.id.userNametv);
+        userNametv=view.findViewById(R.id.descriptiontv);
         timetv=view.findViewById(R.id.timetv);
         cityTv=view.findViewById(R.id.cityTv);
         statusTv.setText(booking_status);
@@ -103,6 +111,21 @@ public class bookedRide extends Fragment {
 
         cityTv.setText(dearture_city);
 
+        chatBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fr = new inboxFragment();
+                frameLayout.removeAllViews();
+                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+                Bundle args=new Bundle();
+                args.putString("rides_id",rides_id);
+
+                fr.setArguments(args);
+                transaction.add(R.id.frameLayout, fr).commit();
+
+                // new inboxFragment().execute(rides_id);
+            }
+        });
 
     }
 

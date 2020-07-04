@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,21 +13,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.boatpoolingapp.Dashboard;
-import com.example.boatpoolingapp.Fragments.CurrentRides;
-import com.example.boatpoolingapp.Fragments.bookedRide;
 import com.example.boatpoolingapp.R;
 import com.example.boatpoolingapp.Urls;
 import com.example.boatpoolingapp.login;
 import com.example.boatpoolingapp.model.availableRidesUtils;
-import com.example.boatpoolingapp.model.reservedUserUtils;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -37,7 +29,6 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -95,7 +86,7 @@ public class recyclerviewAvailableRides extends RecyclerView.Adapter<recyclervie
         holder.bookBtn.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-              new bookCall().execute(obj.get_id());
+              new bookCall().execute(obj.get_id(),obj.getUser_id(),obj.getName());
 //                         AppCompatActivity activity = (AppCompatActivity) v.getContext();
 //                        Fragment myFragment = new bookedRide();
 //                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, myFragment).addToBackStack(null).commit();
@@ -148,6 +139,11 @@ public class recyclerviewAvailableRides extends RecyclerView.Adapter<recyclervie
                 nameValuePairs.add(new BasicNameValuePair("ride_id", params[0]));
                 nameValuePairs.add(new BasicNameValuePair("user_id", login.id));
                 nameValuePairs.add(new BasicNameValuePair("name",login.name));
+                //for notification to drriver that some user has booked your ride
+                nameValuePairs.add(new BasicNameValuePair("driver_name",params[2]));
+
+                nameValuePairs.add(new BasicNameValuePair("driver_Id",params[1]));
+
 
                 httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                 HttpResponse httpResponse=httpClient.execute(httpPost);

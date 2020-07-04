@@ -94,6 +94,7 @@ public class AvailableRides extends Fragment {
 
         return fragment;
     }
+
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ridesList.clear();
@@ -105,7 +106,6 @@ public class AvailableRides extends Fragment {
         pDialog.setCancelable(false);
         cityTv.setText(city);
         new  ridesCall().execute(city,dateTime);
-
 
     }
 
@@ -247,7 +247,6 @@ public class AvailableRides extends Fragment {
 //                        }
                         Log.d("result===2",""+"id"+_id+"user_id"+user_id+"dearture_city"+dearture_city+"seats"+seats+"departure_time"+departure_time+"Name"+Name);
 
-
                         availableRidesUtils a=new availableRidesUtils(_id,user_id,dearture_city,seats,departure_time,Name);
                         ridesList.add(a);
                     }
@@ -256,6 +255,7 @@ public class AvailableRides extends Fragment {
                     recyclerView.setLayoutManager(linearLayoutManager);
                     adapter = new recyclerviewAvailableRides(ridesList, getContext());
                     recyclerView.setAdapter(adapter);
+
 //                    Fragment nestedFragment = new CurrentRides();
 //                    frameLayout.removeAllViews();
 //                    FragmentTransaction transaction = getChildFragmentManager().beginTransaction();

@@ -3,30 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="2dp"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="6dp"
-        app:cardElevation="2000dp">
+        app:cardElevation="6dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:orientation="horizontal">
-
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imageProfile"
-                android:layout_width="60dp"
-                android:layout_height="84dp"
-                android:layout_gravity="center"
-
-                android:src="@drawable/ic_user_1"
-                app:civ_border_color="@color/colorPrimary"
-                app:civ_border_width="2dp" />
 
 
             <!--            <ImageView-->
@@ -46,7 +36,7 @@
                 android:background="@android:color/darker_gray" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:orientation="vertical">
@@ -54,16 +44,17 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="2dp"
                     android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/userNametv"
+
+                    <RatingBar
+                        android:id="@+id/ratingbar"
+                        style="@style/Widget.AppCompat.RatingBar"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Name "
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="18sp" />
+                        android:layout_height="match_parent"
+                        android:isIndicator="true"
+                        android:stepSize="0.1" />
 
 
                 </LinearLayout>
@@ -74,28 +65,18 @@
                     android:layout_marginTop="10dp">
 
                     <TextView
-                        android:id="@+id/datetv"
+                        android:id="@+id/nametv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Time "
+                        android:text="Name "
                         android:textColor="@color/colorPrimary"
-                        android:textSize="18sp" />
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
 
 
                 </LinearLayout>
             </LinearLayout>
 
-            <Button
-                android:id="@+id/bookBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="37dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="20dp"
-                android:layout_weight="1"
-                android:background="@color/design_default_color_error"
-                android:text="Book"
-                android:textColor="@color/white_greyish" />
         </LinearLayout>
 
         <View

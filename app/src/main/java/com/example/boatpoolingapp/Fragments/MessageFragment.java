@@ -83,7 +83,7 @@ public class MessageFragment extends Fragment {
 
 
         Adapter adapter = new Adapter(getChildFragmentManager());
-        adapter.addFragment(new recievedRatings(), "Inbox");
+        adapter.addFragment(new inboxFragment(), "Inbox");
         adapter.addFragment(new leftRatings(), "Notification");
         viewPager.setAdapter(adapter);
 

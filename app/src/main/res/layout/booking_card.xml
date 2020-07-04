@@ -60,7 +60,7 @@
                     <TextView
                         android:id="@+id/userNametv"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:text="Name "
                         android:textColor="@color/colorPrimary"
                         android:textSize="18sp" />
@@ -76,7 +76,7 @@
                     <TextView
                         android:id="@+id/datetv"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:text="Time "
                         android:textColor="@color/colorPrimary"
                         android:textSize="18sp" />

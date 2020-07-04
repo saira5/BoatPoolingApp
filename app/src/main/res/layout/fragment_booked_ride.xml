@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/frameLayout"
+
     android:background="@color/white"
     tools:context=".Fragments.CurrentRides">
 
@@ -34,19 +36,38 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="150dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="30dp"
         android:layout_marginBottom="20dp"
         android:orientation="vertical">
 
-
-        <TextView
-            android:id="@+id/tv"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="369dp"
             android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-            android:text="Rides You have Booked"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Rides You have Booked"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/chatBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/loginbutton"
+                android:backgroundTint="@android:color/holo_green_dark"
+                android:padding="2dp"
+                android:text="Chat"
+                android:textColor="@color/white" />
+
+
+        </LinearLayout>
 
         <View
             android:id="@+id/view"
@@ -56,13 +77,15 @@
             android:layout_marginStart="@dimen/spacing_small"
             android:layout_marginEnd="@dimen/spacing_small"
             android:background="@color/black" />
+
         <TextView
-            android:id="@+id/userNametv"
+            android:id="@+id/descriptiontv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="Mr John"
             android:textSize="18sp" />
+
         <TextView
             android:id="@+id/timetv"
             android:layout_width="match_parent"
@@ -72,12 +95,12 @@
             android:textSize="18sp" />
 
         <TextView
-        android:id="@+id/cityTv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="Heidelberg"
-        android:textSize="18sp" />
+            android:id="@+id/cityTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Heidelberg"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/statusTv"
@@ -89,14 +112,14 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-<!--        <View-->
-<!--            android:id="@+id/view4"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="1dp"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:layout_marginStart="@dimen/spacing_small"-->
-<!--            android:layout_marginEnd="@dimen/spacing_small"-->
-<!--            android:background="@android:color/darker_gray" />-->
+        <!--        <View-->
+        <!--            android:id="@+id/view4"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="1dp"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            android:layout_marginStart="@dimen/spacing_small"-->
+        <!--            android:layout_marginEnd="@dimen/spacing_small"-->
+        <!--            android:background="@android:color/darker_gray" />-->
 
     </LinearLayout>
 

@@ -6,17 +6,18 @@
         android:enabled="true"
         android:icon="@drawable/boat"
         android:title="Ride"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom|withText" />
     <item
         android:id="@+id/action_message"
         android:enabled="true"
-        android:icon="@drawable/message"
-        android:title="Messages"
-        app:showAsAction="ifRoom" />
+        android:icon="@drawable/ic_notifications"
+        android:title="Notification"
+        app:showAsAction="ifRoom|withText" />
     <item
         android:id="@+id/action_Profile"
         android:enabled="true"
         android:icon="@drawable/user"
         android:title="Profile"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom|withText" />
+
 </menu>

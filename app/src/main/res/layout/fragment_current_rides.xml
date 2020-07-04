@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/frameLayout"
+
     android:background="@color/white"
     tools:context=".Fragments.CurrentRides">
 
@@ -32,9 +34,9 @@
     <LinearLayout
         android:layout_width="352dp"
         android:layout_height="438dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="25dp"
         android:layout_marginTop="140dp"
-        android:layout_marginRight="60dp"
+        android:layout_marginRight="65dp"
         android:layout_marginBottom="20dp"
         android:orientation="vertical">
 
@@ -43,8 +45,8 @@
             android:id="@+id/tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:text="Rides You have Offered"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -60,7 +62,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/userNametv"
+                    android:id="@+id/descriptiontv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
@@ -80,12 +82,24 @@
                 android:id="@+id/completeBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="70dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/loginbutton"
                 android:backgroundTint="@android:color/holo_orange_light"
                 android:padding="2dp"
-                android:text="Complete Ride"
+                android:text="End Ride"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/chatBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/loginbutton"
+                android:backgroundTint="@color/black"
+                android:padding="2dp"
+                android:text="Chat"
                 android:textColor="@color/white" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -95,6 +109,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="Seats Available"
+
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
 

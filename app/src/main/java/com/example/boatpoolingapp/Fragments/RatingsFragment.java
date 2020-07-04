@@ -72,7 +72,6 @@ public class RatingsFragment extends Fragment {
         TabLayout tabs = (TabLayout) view.findViewById(R.id.result_tabs);
         tabs.setupWithViewPager(viewPager);
 
-
         return view;
 
     }

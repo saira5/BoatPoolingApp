@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,6 +22,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,11 +61,14 @@ public class ProfileFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    EditText editTextFirstName,editTextLastName,editTextPhoneNum,editTextEmail,editTextCity,editTextGender;
-    TextView textUserName;
+    EditText editTextFirstName,editTextLastName,editTextEmergencyPhone,editTextPhoneNum,editTextEmail,editTextCity,editTextGender,editTextDriverID,editTextAge;
+    TextView textUserName,ratingtv;
+    public static String fname,lname,phone,email,city,driverID,age,gender,ephone;
     Dialog dialog;
     ProgressDialog pDialog;
     Button buttonLogout;
+    FrameLayout frameLayout;
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -115,10 +120,24 @@ public class ProfileFragment extends Fragment {
         editTextEmail=view.findViewById(R.id.editTextEmail);
         editTextCity=view.findViewById(R.id.editTextCity);
         editTextGender=view.findViewById(R.id.editTextGender);
-        textUserName=view.findViewById(R.id.textUserName);
+        editTextDriverID=view.findViewById(R.id.editTextDriverID);
+        editTextEmergencyPhone=view.findViewById(R.id.editTextEmergencyPhone);
+//        textUserName=view.findViewById(R.id.textUserName);
         buttonLogout=view.findViewById(R.id.buttonLogout);
+//        ratingtv=view.findViewById(R.id.ratingtv);
+        frameLayout = view.findViewById(R.id.frameLayout);
+
         pDialog = new ProgressDialog(getContext());
         pDialog.setCancelable(false);
+//        ratingtv.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v){
+//                Fragment fr = new RatingsFragment();
+//                frameLayout.removeAllViews();
+//                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+//                transaction.add(R.id.frameLayout, fr).commit();
+//            }
+//        });
         buttonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,6 +148,7 @@ public class ProfileFragment extends Fragment {
             }
         });
         new getProfile().execute(login.id);
+
 
     }
 
@@ -203,15 +223,33 @@ public class ProfileFragment extends Fragment {
 //
 //                }
 
-                String fname=jsonObject.getString("firstName");
-                String lname=jsonObject.getString("lastName");
+
+
+
+
 
                 editTextFirstName.setText(jsonObject.getString("firstName"));
                 editTextLastName.setText(jsonObject.getString("lastName"));
                 editTextEmail.setText(jsonObject.getString("username"));
                 editTextGender.setText(jsonObject.getString("gender"));
-                textUserName.setText(fname+" "+lname);
-                jsonObject.getString("dob");
+                editTextCity.setText(jsonObject.getString("city"));
+                editTextPhoneNum.setText(jsonObject.getString("mobile"));
+                editTextDriverID.setText(driverID=jsonObject.getString("driverID"));
+
+                editTextEmergencyPhone.setText(driverID=jsonObject.getString("emergencyMobile"));
+
+                fname =jsonObject.getString("firstName");
+                lname=jsonObject.getString("lastName");
+                phone=jsonObject.getString("mobile");
+                email=jsonObject.getString("username");
+//                city=jsonObject.getString("lastName");
+                driverID=jsonObject.getString("driverID");
+                gender=jsonObject.getString("gender");
+                ephone=jsonObject.getString("mobile");
+                city=jsonObject.getString("city");
+
+//                textUserName.setText(fname+" "+lname);
+//                jsonObject.getString("dob");
 
 
               //  }

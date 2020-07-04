@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.boatpoolingapp.R;
+import com.example.boatpoolingapp.login;
 import com.example.boatpoolingapp.model.Message;
 
 import java.util.List;
@@ -66,7 +67,13 @@ public class ChatBoxAdapter  extends RecyclerView.Adapter<ChatBoxAdapter.MyViewH
 
 
         Message m = MessageList.get(position);
-        holder.nickname.setText(m.getNickname());
+        if(login.name.contains(m.getNickname())){
+            holder.nickname.setText("You"+" : ");
+
+        }
+        else {
+            holder.nickname.setText(m.getNickname()+" : ");
+        }
 
         holder.message.setText(m.getMessage() );
 

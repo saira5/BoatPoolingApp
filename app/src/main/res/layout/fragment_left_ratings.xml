@@ -6,15 +6,12 @@
     android:background="@color/white"
     tools:context=".Fragments.leftRatings">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="401dp"
-        android:layout_height="170dp"
-        android:layout_marginTop="300dp"
-        android:gravity="center"
-        android:text=" Left Rating"
-        android:textColor="@color/design_default_color_error"
-        android:textSize="36sp"
-        android:textStyle="bold" />
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="564dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="50dp" />
 </FrameLayout>

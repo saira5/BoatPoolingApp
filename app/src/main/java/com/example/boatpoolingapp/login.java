@@ -46,7 +46,7 @@ public class login extends AppCompatActivity implements View.OnClickListener{
 
     EditText etemail,etpassword;
     String email,password;
-   public static String id,name;
+   public static String id,name,dob,lastName,firstName,gender,emergencyMobile,mobile,city,driverID,bio;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -174,7 +174,33 @@ public class login extends AppCompatActivity implements View.OnClickListener{
 
                             name= jsonObject.getString("Name");
 
+                            JSONObject jsonObject1=jsonObject.getJSONObject("data");
 
+                            firstName= jsonObject1.getString("firstName");
+                            lastName= jsonObject1.getString("lastName");
+                            dob= jsonObject1.getString("dob");
+                            gender=  jsonObject1.getString("gender");
+
+
+                            if(jsonObject1.has("emergencyMobile")){
+                                emergencyMobile=  jsonObject1.getString("emergencyMobile");
+
+                            }
+                            if(jsonObject1.has("mobile")){
+                                mobile=jsonObject1.getString("mobile") ;
+
+                            }
+                            if(jsonObject1.has("driverID")){
+                                driverID= jsonObject1.getString("driverID");
+
+                            }
+
+                            if(jsonObject1.has("city")){
+                                city=  jsonObject1.getString("city");
+                            }
+                            if(jsonObject1.has("bio")){
+                                city=  jsonObject1.getString("bio");
+                            }
                             // Toast.makeText(login.this, getString(R.string.toast_login_success), Toast.LENGTH_LONG).show();
                             Intent i = new Intent(login.this,Dashboard.class);
                             i.putExtra("id",id);
@@ -196,7 +222,7 @@ public class login extends AppCompatActivity implements View.OnClickListener{
 
 
             }catch (Exception e){
-                Toast.makeText(login.this, "Server Error ", Toast.LENGTH_LONG).show();
+                Toast.makeText(login.this, "Server Error "+e, Toast.LENGTH_LONG).show();
                 Log.d("Response", "onPostExecute: "+ e);
 
                 e.printStackTrace();

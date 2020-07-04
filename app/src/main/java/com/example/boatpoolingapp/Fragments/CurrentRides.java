@@ -10,6 +10,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,12 +46,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -63,10 +62,11 @@ public class CurrentRides extends Fragment {
     public static String dateTime,destination,seats;
     public static String rides_id;
     String _id;
-    Button completeBtn;
+    Button completeBtn,chatBtn;
     String user_id;
     String dearture_city;
     String ride_type;
+    FrameLayout frameLayout;
 
     String departure_time;
     String name;
@@ -112,12 +112,14 @@ public class CurrentRides extends Fragment {
         reservedList.clear();
         pDialog = new ProgressDialog(getActivity());
         pDialog.setCancelable(false);
-
+        chatBtn=view.findViewById(R.id.chatBtn);
         completeBtn=view.findViewById(R.id.completeBtn);
-        dateTv=view.findViewById(R.id.userNametv);
+        dateTv=view.findViewById(R.id.descriptiontv);
         cityTv=view.findViewById(R.id.cityTv);
         seatsNumber=view.findViewById(R.id.seatsNumber);
         recyclerView=view.findViewById(R.id.recyclerView);
+        frameLayout = view.findViewById(R.id.frameLayout);
+
         rides_id = getArguments().getString("rides_id");
 
         if(rides_id==null){
@@ -143,18 +145,29 @@ public class CurrentRides extends Fragment {
             }
             String formattedDate = outputFormat.format(date);
             dateTime=formattedDate;
-
           //  dateTime = getArguments().getString("dateTime");
             destination = getArguments().getString("destination");
             dateTv.setText(dateTime);
             cityTv.setText(destination);
             seats = getArguments().getString("seats");
-
             completeBtn.setVisibility(view.VISIBLE);
-
             new offerRideCall().execute(rides_id);
         }
 
+        chatBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fr = new inboxFragment();
+                frameLayout.removeAllViews();
+                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+                Bundle args=new Bundle();
+                args.putString("rides_id",rides_id);
+                fr.setArguments(args);
+                transaction.add(R.id.frameLayout, fr).commit();
+
+                // new inboxFragment().execute(rides_id);
+            }
+        });
 
         completeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
