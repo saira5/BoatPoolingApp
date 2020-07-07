@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/frameLayout"
+    android:background="@color/white"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/layoutTop"
+        android:layout_width="match_parent"
+        android:layout_height="179dp"
+        android:background="@color/background_color">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageProfile"
+            android:layout_width="130dp"
+            android:layout_height="97dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_user_1"
+            app:civ_border_color="@color/colorPrimary"
+            app:civ_border_width="2dp" />
+
+        <TextView
+            android:id="@+id/textUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:layout_below="@id/imageProfile"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="Mr john"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/ratingtv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            android:layout_below="@+id/textUserName"
+            android:layout_marginTop="5dp"
+            android:background="@color/button_selectorcolor"
+            android:drawableLeft="@drawable/star"
+            android:drawablePadding="8dp"
+            android:text="Ratings"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="178dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/result_tabs"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:tabGravity="fill"
+
+                app:tabIndicatorColor="@color/white_greyish"
+                app:tabMaxWidth="0dp"
+                app:tabMode="fixed"
+                app:tabSelectedTextColor="@color/white"
+                app:tabTextColor="@color/white_greyish" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="230dp">
+
+
+        </androidx.viewpager.widget.ViewPager>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</RelativeLayout>
